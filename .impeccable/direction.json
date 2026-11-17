@@ -1,0 +1,66 @@
+{
+  "seedKey": "af2762a5",
+  "seedNote": "concept-seed.mjs --scope direction --mode operate printed key af2762a5, assigned grounded index 6 (Court Record); the user chose challenger digital-design-canon-metro-typographic-tiles.",
+  "title": "Choose the visual world for the transcriber",
+  "question": "The roll assigned Court Record. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Court Record",
+      "kicker": "THE ROLL",
+      "lineage": "Stenotype paper tape and certified court transcript pages",
+      "thesis": "Every video becomes a certified record: numbered lines, timestamp citations, a tape that feeds out as it listens.",
+      "palette": ["#f7f8f6", "#16181d", "#2b4bd8", "#c8ccd4", "#b3261e"],
+      "materials": ["pleading-paper line numbers", "fan-folded steno tape", "Courier body type"],
+      "viewport": "Left: the Chrome tab as a docket header with one large Transcribe button. Right: a ruled transcript page with numbered lines and timestamps in the margin.",
+      "risk": "Can read as legal-office stiff if the paper metaphor is decorative instead of functional."
+    },
+    {
+      "id": "challenger-metro",
+      "label": "Metro Tiles",
+      "lineage": "Windows Phone / Windows 8 Metro typographic language",
+      "thesis": "Giant lowercase words and flat colour tiles; the current tab is a live tile that flips to its transcript.",
+      "palette": ["#000000", "#ffffff", "#1ba1e2", "#a4c400"],
+      "materials": ["flat colour tiles", "giant Segoe light type"],
+      "viewport": "A black panorama: 'now playing' cropped off the edge, a big cyan tile for the Chrome tab, history as smaller tiles.",
+      "risk": "Can feel like 2012 Windows nostalgia rather than a current tool.",
+      "case": "Wins audience recognition on Windows; loses the transcript's document character, which is the product.",
+      "hero": "https://impeccable.style/worlds/cards/digital-design-canon-metro-typographic-tiles-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/digital-design-canon-metro-typographic-tiles.webp"
+    },
+    {
+      "id": "challenger-gateboard",
+      "label": "Gate Board",
+      "lineage": "Boarding pass and airport departure board",
+      "thesis": "Each video is a boarding pass; the queue is a departure board whose rows rerank in place as jobs finish.",
+      "palette": ["#e9ebee", "#111317", "#f2b705", "#2e7d32"],
+      "materials": ["segmented pass stubs", "tabular departure rows"],
+      "viewport": "Top: a pass for the current tab with title, length and a Transcribe stub. Below: a board of queued and finished transcripts.",
+      "risk": "Shines with many jobs; most people transcribe one video at a time.",
+      "case": "Fuses well for the queue and status; weaker for reading the transcript itself.",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-boarding-pass-and-gate-board-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/vernacular-ephemera-boarding-pass-and-gate-board.webp"
+    },
+    {
+      "id": "challenger-datamatics",
+      "label": "Datamatics",
+      "lineage": "Ryoji Ikeda data-sublime installations",
+      "thesis": "The audio drawn as a black-and-white barcode field that resolves into text as it is transcribed.",
+      "palette": ["#000000", "#ffffff"],
+      "materials": ["hairline bar fields", "dense monospace numerics"],
+      "viewport": "Full-width barcode of the waveform; transcribed columns light up as the model passes over them.",
+      "risk": "Pure black-and-white strobing reads as art, not a tool, for non-technical people.",
+      "case": "Fuses poorly because the general public needs a calm reading surface, not a data installation.",
+      "hero": "https://impeccable.style/worlds/cards/ikeda-datamatics-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/ikeda-datamatics.webp"
+    }
+  ],
+  "reroll": true,
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A clean modern utility app: sidebar, big action button, transcript pane, executed impeccably.",
+    "viewport": "Sidebar with history, main area with the current tab card, Transcribe button and the transcript below."
+  },
+  "steer": true
+}

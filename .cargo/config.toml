@@ -1,0 +1,6 @@
+[env]
+# The cmake crate strips MSVC optimisation flags from whisper.cpp's Release config, which makes
+# transcription ~10x slower. cl.exe reads extra options from the CL variable, past that filter.
+CL = "/O2 /Oi /Ob2"
+# bindgen also needs libclang: set LIBCLANG_PATH to the folder holding libclang.dll
+# (any LLVM install, or `pip install libclang`), see README.

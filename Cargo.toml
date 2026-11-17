@@ -1,0 +1,29 @@
+[package]
+name = "tabscribe"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dioxus = { version = "0.7", features = ["desktop"] }
+whisper-rs = "0.16"
+symphonia = { version = "0.5", features = ["aac", "isomp4", "mkv", "mp3"] }
+rubato = "0.16"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+directories = "6"
+arboard = "3"
+rfd = "0.15"
+tokio = { version = "1", features = ["sync"] }
+
+[target.'cfg(windows)'.dependencies]
+uiautomation = "0.25"
+wasapi = "0.27"
+windows = { version = "0.62", features = ["Win32_Foundation", "Win32_UI_WindowsAndMessaging"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+
+[dev-dependencies]
+dioxus-ssr = "0.7"

@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T00:00:00Z",
+  "title": "Design System: tabscribe",
+  "extensions": {
+    "colorMeta": {
+      "cobalt": { "role": "primary", "displayName": "Metro Cobalt", "canonical": "#1ba1e2", "tonalRamp": ["#04273a", "#073d5b", "#0a557f", "#0e73b3", "#1081c7", "#1ba1e2", "#6cc3ee", "#c6e8f8"] },
+      "cobalt-fill": { "role": "primary", "displayName": "Cobalt Tile Fill", "canonical": "#0e73b3", "tonalRamp": ["#04273a", "#073d5b", "#0a557f", "#0e73b3", "#1081c7", "#1ba1e2", "#6cc3ee", "#c6e8f8"] },
+      "magenta": { "role": "secondary", "displayName": "Metro Magenta", "canonical": "#d80073", "tonalRamp": ["#3a001f", "#5c0031", "#850047", "#b0005e", "#d80073", "#ec4a9c", "#f591c4", "#fbd3e8"] },
+      "ground": { "role": "neutral", "displayName": "Black Ground", "canonical": "#000000", "tonalRamp": ["#000000", "#0b0b0b", "#161616", "#2a2a2a", "#555555", "#8a8a8a", "#c4c4c4", "#f2f2f2"] },
+      "ink": { "role": "neutral", "displayName": "White Ink", "canonical": "#ffffff", "tonalRamp": ["#000000", "#0b0b0b", "#161616", "#2a2a2a", "#555555", "#8a8a8a", "#c4c4c4", "#ffffff"] },
+      "ink-dim": { "role": "neutral", "displayName": "Dim Ink", "canonical": "rgba(255, 255, 255, 0.68)" },
+      "ink-faint": { "role": "neutral", "displayName": "Faint Ink", "canonical": "rgba(255, 255, 255, 0.46)" },
+      "rule": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(255, 255, 255, 0.14)" },
+      "tile-empty": { "role": "neutral", "displayName": "Empty Tile", "canonical": "#161616" }
+    },
+    "typographyMeta": {
+      "pivot": { "displayName": "Pivot", "purpose": "Section names that are the navigation." },
+      "display": { "displayName": "Display", "purpose": "Stage word inside the working tile." },
+      "headline": { "displayName": "Headline", "purpose": "Tab title inside the source tile, two lines max." },
+      "title": { "displayName": "Title", "purpose": "Transcript title, single line." },
+      "row-title": { "displayName": "Row Title", "purpose": "History entries." },
+      "body": { "displayName": "Body", "purpose": "Transcript lines, max 70ch." },
+      "hint": { "displayName": "Hint", "purpose": "The one plain-language line under the tile; 1.25rem variant for standalone messages." },
+      "label": { "displayName": "Label", "purpose": "Source host, meta lines, toolbar tools." },
+      "timestamp": { "displayName": "Timestamp", "purpose": "Cobalt tabular timestamps in the transcript gutter." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-metro", "value": "cubic-bezier(0.1, 0.9, 0.2, 1)", "purpose": "Every entrance and progress transition; steep start, long settle." },
+      { "name": "pivot-in", "value": "translateX(48px) to 0, opacity 0 to 1, 0.45s ease-metro", "purpose": "Page entrance when switching pivot sections." },
+      { "name": "flip", "value": "perspective(900px) rotateX(-80deg) to 0, 0.6s ease-metro, origin top", "purpose": "Source tile arrival." },
+      { "name": "glide", "value": "translateX(32px) to 0, 0.42s ease-metro", "purpose": "Newest transcript line while live." },
+      { "name": "dots", "value": "five 4px squares, 2.4s loop, 0.14s stagger", "purpose": "Indeterminate progress inside the working tile." },
+      { "name": "state", "value": "0.15s to 0.2s color/border", "purpose": "Hover colour changes." }
+    ],
+    "breakpoints": [
+      { "name": "short", "value": "max-height: 700px" },
+      { "name": "snapped", "value": "max-width: 640px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Source Tile",
+      "kind": "custom",
+      "refersTo": "source-tile",
+      "description": "The current Chrome tab as a full-width cobalt tile; the whole tile is the transcribe action.",
+      "html": "<button class=\"ds-tile\"><span class=\"ds-tile-site\">current tab · canvas.myschool.edu</span><span class=\"ds-tile-title\">Lecture 12: Entropy and the second law</span><span class=\"ds-tile-go\">transcribe <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M7 4.5 19 12 7 19.5z\"/></svg></span></button>",
+      "css": ".ds-tile { position: relative; display: flex; flex-direction: column; gap: 6px; width: 100%; height: 168px; padding: 16px 20px 18px; background: var(--cobalt-fill, #0e73b3); color: #fff; border: 0; border-radius: 0; text-align: left; font-family: Selawik, 'Segoe UI', sans-serif; font-weight: 350; cursor: pointer; transition: background 0.15s; } .ds-tile:hover { background: #1081c7; } .ds-tile:focus-visible { outline: 2px solid #fff; outline-offset: 3px; } .ds-tile-site { font-size: 0.95rem; color: rgba(255,255,255,0.86); } .ds-tile-title { font-size: 2rem; line-height: 1.12; letter-spacing: -0.01em; max-width: 34ch; } .ds-tile-go { position: absolute; right: 20px; bottom: 16px; display: flex; align-items: center; gap: 14px; font-weight: 300; font-size: 1.9rem; letter-spacing: -0.015em; }"
+    },
+    {
+      "name": "Failure Tile",
+      "kind": "custom",
+      "refersTo": "source-tile-fail",
+      "description": "Magenta tile; the only place magenta appears.",
+      "html": "<div class=\"ds-tile-fail\" role=\"alert\"><span class=\"ds-tile-site\">couldn't transcribe</span><span class=\"ds-tile-msg\">this site needs you to sign in. open the video in chrome first, then try again.</span></div>",
+      "css": ".ds-tile-fail { display: flex; flex-direction: column; gap: 6px; height: 168px; padding: 16px 20px 18px; background: var(--magenta, #d80073); color: #fff; font-family: Selawik, 'Segoe UI', sans-serif; font-weight: 350; } .ds-tile-site { font-size: 0.95rem; color: rgba(255,255,255,0.86); } .ds-tile-msg { margin-top: auto; font-size: 1.25rem; line-height: 1.35; max-width: 60ch; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Square 2px white stroke; turns cobalt on hover.",
+      "html": "<button class=\"ds-btn\">try again</button>",
+      "css": ".ds-btn { height: 44px; display: inline-flex; align-items: center; gap: 14px; padding: 0 16px; background: none; color: #fff; border: 2px solid #fff; border-radius: 0; font-family: Selawik, 'Segoe UI', sans-serif; font-weight: 350; font-size: 1.1rem; cursor: pointer; transition: color 0.15s, border-color 0.15s; } .ds-btn:hover { color: var(--cobalt, #1ba1e2); border-color: var(--cobalt, #1ba1e2); } .ds-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; } .ds-btn:disabled { opacity: 0.38; cursor: default; }"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Cobalt text action without a stroke, for secondary moves.",
+      "html": "<button class=\"ds-btn-quiet\">paste a link</button>",
+      "css": ".ds-btn-quiet { height: 44px; padding: 0 6px; background: none; border: 2px solid transparent; color: var(--cobalt, #1ba1e2); font-family: Selawik, 'Segoe UI', sans-serif; font-weight: 350; font-size: 1.1rem; cursor: pointer; } .ds-btn-quiet:hover { text-decoration: underline; text-underline-offset: 4px; } .ds-btn-quiet:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Link Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Square black field, 2px stroke, cobalt on focus.",
+      "html": "<input class=\"ds-input\" placeholder=\"paste a video link\">",
+      "css": ".ds-input { height: 44px; padding: 0 14px; background: #000; color: #fff; border: 2px solid rgba(255,255,255,0.82); border-radius: 0; outline: none; font-family: Selawik, 'Segoe UI', sans-serif; font-weight: 350; font-size: 1.05rem; } .ds-input::placeholder { color: rgba(255,255,255,0.56); } .ds-input:focus { border-color: var(--cobalt, #1ba1e2); }"
+    },
+    {
+      "name": "Pivot",
+      "kind": "nav",
+      "refersTo": "pivot-item",
+      "description": "Giant light section names that are the navigation.",
+      "html": "<nav class=\"ds-pivot\" role=\"tablist\"><button class=\"ds-pivot-item on\" role=\"tab\" aria-selected=\"true\">transcribe</button><button class=\"ds-pivot-item\" role=\"tab\">history</button></nav>",
+      "css": ".ds-pivot { display: flex; gap: 30px; background: #000; padding: 8px 0; } .ds-pivot-item { background: none; border: 0; padding: 0; font-family: Selawik, 'Segoe UI', sans-serif; font-weight: 300; font-size: 2.75rem; line-height: 1.1; letter-spacing: -0.02em; color: rgba(255,255,255,0.46); cursor: pointer; transition: color 0.2s; } .ds-pivot-item:hover { color: rgba(255,255,255,0.68); } .ds-pivot-item.on { color: #fff; } .ds-pivot-item:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Transcript Line",
+      "kind": "custom",
+      "refersTo": "body",
+      "description": "Cobalt tabular timestamp in a 72px gutter beside the line.",
+      "html": "<div class=\"ds-line\"><button class=\"ds-ts\">0:07</button><p>Today the question is different: not how much energy, but which way things go.</p></div>",
+      "css": ".ds-line { display: grid; grid-template-columns: 72px 1fr; gap: 12px; padding: 6px 0; align-items: baseline; background: #000; font-family: Selawik, 'Segoe UI', sans-serif; } .ds-ts { background: none; border: 0; padding: 0; text-align: left; color: var(--cobalt, #1ba1e2); font: inherit; font-size: 0.95rem; font-weight: 400; font-variant-numeric: tabular-nums; cursor: pointer; } .ds-ts:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; } .ds-ts:focus-visible { outline: 2px solid #fff; outline-offset: 3px; } .ds-line p { margin: 0; font-size: 1.125rem; line-height: 1.55; font-weight: 350; color: rgba(255,255,255,0.92); max-width: 70ch; }"
+    },
+    {
+      "name": "History Row",
+      "kind": "card",
+      "refersTo": "history-row",
+      "description": "Hairline-separated row; light title turns cobalt on hover.",
+      "html": "<button class=\"ds-row\"><span class=\"ds-row-title\">Lecture 12: Entropy and the second law</span><span class=\"ds-row-meta\">canvas.myschool.edu · 48 min · 2 days ago</span></button>",
+      "css": ".ds-row { width: 100%; display: flex; flex-direction: column; gap: 4px; padding: 14px 0 15px; background: none; border: 0; border-bottom: 1px solid rgba(255,255,255,0.14); color: #fff; text-align: left; font-family: Selawik, 'Segoe UI', sans-serif; cursor: pointer; } .ds-row:hover .ds-row-title { color: var(--cobalt, #1ba1e2); } .ds-row:focus-visible { outline: 2px solid #fff; outline-offset: 3px; } .ds-row-title { font-weight: 300; font-size: 1.5rem; line-height: 1.2; letter-spacing: -0.01em; transition: color 0.15s; } .ds-row-meta { font-weight: 350; font-size: 0.92rem; color: rgba(255,255,255,0.68); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Live Tile",
+    "overview": "A Metro typographic world, distilled. Pure black ground, white Selawik set light and lowercase, and exactly one solid colour block on screen: the cobalt tile that holds the Chrome tab you are already watching. Its whole surface is the action. Everything else is type on black: the pivot section names at the top are the navigation, a single hint line sits under the tile, and the transcript reads below a hairline.\n\nThe world was first built as a three-pane panorama and then distilled at the user's request because it read as cluttered. What shipped is one column (max 880px of content) with a pivot between \"transcribe\" and \"history\". The restraint is the system: one filled tile, one accent hue, magenta only when something failed. Hierarchy comes from size and weight of type, not from boxes, cards, or colour.\n\nFlat, square, and still until something is live. Motion is Metro's: content glides in from the right on a steep decelerating curve, the tile flips down into place, and indeterminate progress is the row of rushing dots.",
+    "keyCharacteristics": [
+      "Black ground, white light type, lowercase throughout.",
+      "One solid cobalt tile per screen; it is the primary action.",
+      "Zero radius, zero shadow, zero gradient.",
+      "2px white outlined controls that turn cobalt on hover.",
+      "Pivot navigation set as giant light words, inactive ones faded.",
+      "Metro motion: translate-in from the right on `cubic-bezier(0.1, 0.9, 0.2, 1)`."
+    ],
+    "rules": [
+      { "name": "The One Tile Rule", "body": "At most one solid colour block is on screen at a time, and it is the source tile. Its colour is its state: cobalt fill is \"ready / working\", magenta is \"failed\", near-black is \"nothing to do\". No other surface gets a fill.", "section": "colors" },
+      { "name": "The One Accent Rule", "body": "Cobalt is the only accent hue. It marks what is live or actionable: links, timestamps, hover, focus, matches. If something is cobalt, it can be pressed or it is happening now.", "section": "colors" },
+      { "name": "The Magenta Is Alarm Rule", "body": "Magenta appears only as the failure tile. Never as an accent, a highlight, or decoration.", "section": "colors" },
+      { "name": "The Light At Size Rule", "body": "The bigger the type, the lighter and tighter it gets: 300 weight with negative tracking from 1.5rem up; 350 for reading sizes. Weight 600 is reserved for the one fact worth bolding in a line (the active model name in the footer).", "section": "typography" },
+      { "name": "The Lowercase Voice Rule", "body": "Interface copy is lowercase: pivot, buttons, hints, states. Proper content (video titles) keeps its own casing.", "section": "typography" },
+      { "name": "The Flat Metro Rule", "body": "No box-shadow, no gradient, no translucent glass. If something needs separation, use the 1px hairline or the tile fill.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep exactly one filled tile on screen, and let its fill state be the status.",
+      "Do use cobalt for anything live or pressable, and nothing else.",
+      "Do set large type at weight 300 with negative tracking, and reading text at 350.",
+      "Do keep every corner square and every control stroke at 2px.",
+      "Do separate regions with the 1px hairline or with space, never with a box.",
+      "Do move things in from the right on `cubic-bezier(0.1, 0.9, 0.2, 1)`, and drop all motion under reduced-motion.",
+      "Do keep the hint line to one plain-language sentence in dim ink."
+    ],
+    "donts": [
+      "Don't add a second filled tile, card, or panel; the panorama was distilled away for being cluttered.",
+      "Don't use magenta for anything but the failure tile.",
+      "Don't introduce a second accent hue.",
+      "Don't use shadows, gradients, or rounded corners.",
+      "Don't put faint ink (46% white) on text smaller than the pivot.",
+      "Don't add labels above titles; the source line inside the tile is data (the host), not a section label."
+    ]
+  }
+}
