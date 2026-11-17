@@ -126,3 +126,7 @@ cargo test --release
 `cargo test --release preview` renders every screen to `target/preview/*.html`, which is where the screenshots above come from.
 
 Built with [Dioxus](https://dioxuslabs.com), [whisper-rs](https://github.com/tazz4843/whisper-rs), [wasapi](https://github.com/HEnquist/wasapi-rs), [symphonia](https://github.com/pdeljanov/Symphonia) and [yt-dlp](https://github.com/yt-dlp/yt-dlp).
+
+## License
+
+MIT. See [LICENSE](LICENSE). The speech models are downloaded from the whisper.cpp project, and yt-dlp is downloaded from its official releases; both keep their own licenses. The embedded Selawik font is © Microsoft, under the SIL Open Font License ([assets/Selawik-OFL.txt](assets/Selawik-OFL.txt)).

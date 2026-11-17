@@ -2,6 +2,7 @@
 name = "tabscribe"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
 
 [dependencies]
 dioxus = { version = "0.7", features = ["desktop"] }
